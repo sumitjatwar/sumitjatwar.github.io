@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sumit Kumar Jatwar, Predoctoral Research Fellow in Information Systems at IIM Bangalore. Research on human-AI trust, financial inclusion and technology adoption.">
+<meta property="og:title" content="Sumit Kumar Jatwar">
+<meta property="og:description" content="Research on human-AI trust, financial inclusion and technology adoption. IIM Bangalore.">
+<title>Sumit Kumar Jatwar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single-column research portfolio; sticky nav, thesis hero with an illustrative "adoption grid", then a label-column / content-column rhythm for papers, experience, education, awards, CV and contact */
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --fg:#14201f; --muted:#5b6866; --line:#d9dfdb;
+  --accent:#0e6b62; --accent-soft:#dcece8; --gold:#b07810;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Newsreader", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1514; --surface:#151e1d; --fg:#e6ece9; --muted:#97a5a1; --line:#26322f;
+  --accent:#4cc2b2; --accent-soft:#16302c; --gold:#e3aa3c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1514; --surface:#151e1d; --fg:#e6ece9; --muted:#97a5a1; --line:#26322f;
+  --accent:#4cc2b2; --accent-soft:#16302c; --gold:#e3aa3c; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:1.12rem;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.when{font-family:var(--mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 16px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.mark{width:34px;height:34px;border-radius:8px;background:var(--fg);color:var(--bg);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.9rem}
+.brand b{font-family:var(--display);font-weight:700;font-size:1rem;display:block;line-height:1.1}
+.brand small{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.nav ul{display:flex;gap:4px 18px;list-style:none;margin:0;padding:0;flex-wrap:wrap;align-items:center}
+.nav ul a{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-decoration:none}
+.nav ul a:hover{color:var(--fg)}
+.nav ul a.cvlink{color:var(--bg);background:var(--fg);padding:5px 12px;border-radius:999px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(48px,9vw,100px) clamp(32px,5vw,56px)}
+.hero > *{min-width:0}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;letter-spacing:-.025em;margin:14px 0 20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lede{font-size:1.18rem;color:var(--muted);max-width:34em;margin:0 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--display);font-weight:700;font-size:.95rem;padding:12px 20px;border-radius:999px;text-decoration:none;border:1.5px solid var(--fg);cursor:pointer;background:transparent;color:var(--fg)}
+.btn.primary{background:var(--fg);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent);color:var(--bg)}
+
+.gridcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin:0}
+.gridcard canvas{width:100%;aspect-ratio:1/1;max-width:100%;display:block;margin-top:12px}
+.legend{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:14px;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.gridcard figcaption{font-size:.95rem;color:var(--muted);margin-top:10px;line-height:1.45}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0 0 56px}
+.chips li{font-family:var(--mono);font-size:.76rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--surface)}
+
+/* sections */
+section.block{padding-block:clamp(48px,7vw,80px);border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:220px 1fr;gap:24px}
+.row > *{min-width:0}
+.head{margin-bottom:36px}
+.head h2,.h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:700;letter-spacing:-.02em}
+.head p{color:var(--muted);margin:12px 0 0;max-width:38em}
+
+/* papers */
+.paper{padding-block:28px;border-top:1px dashed var(--line)}
+.paper:first-child{border-top:0;padding-top:0}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.status.wip{background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold)}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.venue{margin-top:10px}
+.paper h3{font-size:1.4rem;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.cite{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin:0 0 12px}
+.paper p{margin:0 0 12px;max-width:40em}
+.tags{display:flex;gap:6px 14px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+
+.agenda{margin-top:40px;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.agenda h3{font-size:1.2rem;margin:8px 0 12px}
+.agenda ul{margin:0;padding-left:1.1em;color:var(--muted)}
+.agenda li{margin-bottom:6px}
+
+/* themes */
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.theme{min-width:0;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.theme .label{color:var(--accent)}
+.theme h3{font-size:1.22rem;margin:10px 0}
+.theme p{margin:0;color:var(--muted);font-size:1.02rem}
+
+/* timeline lists */
+.tl{list-style:none;margin:0;padding:0;display:grid}
+.tl > li{padding-block:22px;border-top:1px solid var(--line)}
+.tl > li:first-child{border-top:0;padding-top:0}
+.tl h3{font-size:1.18rem;font-weight:700}
+.tl .org{font-family:var(--mono);font-size:.8rem;color:var(--accent);margin:4px 0 8px}
+.tl p{margin:0;color:var(--muted);max-width:40em}
+.tl ul{margin:6px 0 0;padding-left:1.1em;color:var(--muted);max-width:42em}
+.tl ul li{margin-bottom:4px}
+.kind{display:block;margin-top:4px}
+
+/* awards / projects / skills */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;list-style:none;margin:0;padding:0}
+.twocol li{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-top:1px solid var(--line);min-width:0}
+.twocol li span:first-child{min-width:0}
+.twocol li .when{flex-shrink:0}
+.twocol small{display:block;color:var(--muted);font-size:.92rem}
+.sub{margin:44px 0 14px}
+.skills{display:grid;grid-template-columns:200px 1fr;gap:0 24px;margin:0}
+.skills dt,.skills dd{padding-block:10px;border-top:1px solid var(--line);margin:0;min-width:0}
+.skills dt{font-family:var(--mono);font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:13px}
+
+/* CV + contact */
+.cvcard{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.doc{width:56px;height:70px;border:1.5px solid var(--fg);border-radius:6px;position:relative;flex-shrink:0;display:grid;place-items:end center;padding-bottom:8px;font-family:var(--mono);font-size:.62rem;font-weight:500}
+.doc::before{content:"";position:absolute;inset:12px 10px auto 10px;height:22px;background:repeating-linear-gradient(var(--line) 0 2px,transparent 2px 6px)}
+.cvmeta{flex:1 1 220px;min-width:0}
+.cvmeta b{font-family:var(--display);font-size:1.1rem;display:block}
+.cvmeta span{color:var(--muted);font-size:.98rem}
+.cvbtns{display:flex;gap:10px;flex-wrap:wrap}
+.note{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-top:10px;min-height:1.2em}
+.contact{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.email{font-family:var(--mono);font-size:.92rem;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);user-select:all;overflow-wrap:anywhere;min-width:0}
+.copy{font-family:var(--mono);font-size:.8rem;padding:10px 14px;border-radius:10px;border:1px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer}
+.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-family:var(--mono);font-size:.82rem}
+footer{border-top:1px solid var(--line);padding-block:28px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:10px}
+  .themes,.twocol{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr}
+  .skills dd{border-top:0;padding-top:0}
+}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark">SJ</span><span><b>Sumit Kumar Jatwar</b><small>Information Systems · IIM Bangalore</small></span></a>
+    <nav aria-label="Sections"><ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="cvlink" href="#cv">CV</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div>
+      <span class="label">Predoctoral Research Fellow · IIM Bangalore · Bengaluru, India</span>
+      <h1>I study when people <em>trust</em> technology enough to use it.</h1>
+      <p class="lede">My research sits in Information Systems, at the meeting point of human–AI interaction and financial inclusion. I look at how people decide to rely on AI systems, and why tools that are already in people's hands, like digital payments, still go unused.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#research">See my research</a>
+        <a class="btn" href="#cv">Download CV</a>
+      </div>
+    </div>
+    <figure class="gridcard">
+      <span class="label">Access is not adoption</span>
+      <canvas id="dots" aria-label="Illustration: a grid of phone-owning adults, some actively using digital payments, many with idle accounts"></canvas>
+      <div class="legend"><span><i style="background:var(--accent)"></i>Active digital payer</span><span><i style="background:var(--gold)"></i>Account, mostly idle</span><span><i style="background:var(--line)"></i>Phone, no use yet</span></div>
+      <figcaption>Each dot is an adult who owns a phone. Illustrative only, not survey data.</figcaption>
+    </figure>
+  </section>
+
+  <ul class="chips" aria-label="Research interests">
+    <li>Human–AI interaction</li><li>Trustworthy &amp; explainable AI</li><li>Trust and reliance on AI</li><li>Decision-making</li><li>Financial inclusion</li><li>Digital payments</li><li>Technology adoption</li>
+  </ul>
+
+  <section class="block" id="research">
+    <div class="row head">
+      <span class="label">Papers</span>
+      <div>
+        <h2>Research papers</h2>
+        <p>Drafts are available on request.</p>
+      </div>
+    </div>
+    <div>
+      <article class="paper row">
+        <div><span class="status">Under review</span><div class="label venue">InCIS 2027 · Track 09</div></div>
+        <div>
+          <h3>Beyond Access: How Gender and Geography Jointly Shape Digital Payment Inclusion in India</h3>
+          <p class="cite">Jatwar, S. K. · Completed research paper · 3rd India Conference on Information Systems</p>
+          <p>Using Global Findex 2025 microdata on Indian mobile phone owners, the study asks whether gender and rural residence act as separate barriers to active digital payment use. The gender gap is widest among urban women and much smaller in rural India. The paper also looks at how exposure to digital-safety threats relates to usage.</p>
+          <div class="tags"><span>Global Findex 2025</span><span>Gender &amp; geography</span><span>Digital safety</span></div>
+        </div>
+      </article>
+      <article class="paper row">
+        <div><span class="status wip">Work in progress</span><div class="label venue">Target: ECIS 2027</div></div>
+        <div>
+          <h3>Do Fans Trust the Machine? Acceptance of Automated and Human Video Refereeing Decisions in the FIFA World Cup</h3>
+          <p class="cite">Jatwar, S. K. · European Conference on Information Systems</p>
+          <p>The study compares how fans accept machine-measured decisions, such as offside and goal-line calls, with human video judgement calls, such as penalties and handballs, across recent FIFA World Cups.</p>
+          <div class="tags"><span>Algorithmic decisions</span><span>Trust in automation</span><span>Sports technology</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="row">
+      <span></span>
+      <div class="agenda">
+        <span class="label">Current research</span>
+        <h3>Human–AI interaction, trust and decision-making</h3>
+        <ul>
+          <li>What makes people trust, adopt and rely on AI-assisted systems</li>
+          <li>How people respond to AI-generated recommendations and decision support</li>
+          <li>How decisions are made in AI-mediated environments</li>
+          <li>The role of explainability, transparency and accountability in trustworthy AI</li>
+          <li>How people engage and interact with intelligent systems</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="themes">
+    <div class="row head">
+      <span class="label">Direction</span>
+      <div>
+        <h2>One question, three angles</h2>
+        <p>What has to be true before people hand a decision, or their money, to a digital system?</p>
+      </div>
+    </div>
+    <div class="themes">
+      <div class="theme"><span class="label">Trust</span><h3>Reliance on AI</h3><p>When people accept or override algorithmic decisions, and how explanation and transparency change that.</p></div>
+      <div class="theme"><span class="label">Inclusion</span><h3>From access to everyday use</h3><p>Why owning an ID, a phone and an account doesn't automatically lead to digital financial activity.</p></div>
+      <div class="theme"><span class="label">Method</span><h3>Behavioural data at scale</h3><p>Survey microdata, econometrics and machine learning, drawn from years of building credit and behaviour models.</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="row head">
+      <span class="label">Experience</span>
+      <div><h2>Industry, startup and research labs</h2></div>
+    </div>
+    <ol class="tl">
+      <li class="row"><div><span class="when">Jun 2022 – Apr 2026</span><span class="label kind">Industry</span></div><div><h3>Data Scientist</h3><div class="org">Annapurna Finance · Bhubaneswar, India</div>
+        <ul>
+          <li>Built machine learning and predictive analytics for large-scale financial decision support.</li>
+          <li>Ran behavioural analytics on millions of microfinance clients to understand repayment, credit risk and decision patterns.</li>
+          <li>Developed a Probability of Default model for loan delinquency and geographic risk-scoring models from socio-economic indicators.</li>
+          <li>Built dashboards and analytics tools for data-driven decisions across the organisation.</li>
+        </ul></div></li>
+      <li class="row"><div><span class="when">Sep 2019 – Present</span><span class="label kind">Founder</span></div><div><h3>Azeedo Agritech Pvt. Ltd.</h3><div class="org">Incubated at NSRCEL, IIM Bangalore</div>
+        <ul>
+          <li>Founded an AI-driven agritech startup building decision-support systems for agriculture.</li>
+          <li>Led machine learning, computer vision and precision agriculture work for crop monitoring and farm management.</li>
+          <li>Studied technology adoption and behavioural barriers in farming communities.</li>
+        </ul></div></li>
+      <li class="row"><div><span class="when">Dec 2018 – Jun 2019</span><span class="label kind">Research Fellow</span></div><div><h3>IDEAS Research Lab</h3><div class="org">Robert Gordon University · Aberdeen, UK</div>
+        <ul>
+          <li>Developed AI-enabled compliance management for industrial environments.</li>
+          <li>Applied computer vision to monitoring and decision support, and explored augmented reality interfaces for decision-making.</li>
+        </ul></div></li>
+      <li class="row"><div><span class="when">Jan 2019 – Jun 2019</span><span class="label kind">Research Intern</span></div><div><h3>AI Lab</h3><div class="org">Lancaster University · UK</div>
+        <ul>
+          <li>Worked on congestion control algorithms for robotic swarms and on simulating distributed AI coordination.</li>
+        </ul></div></li>
+      <li class="row"><div><span class="when">May 2018 – Jul 2018</span><span class="label kind">Research Intern</span></div><div><h3>Dept. of Electronics, Information and Bioengineering</h3><div class="org">Politecnico di Milano · Milan, Italy</div>
+        <ul>
+          <li>Built adaptive behaviour models for humanoid robots and used machine learning to improve human–robot interaction and engagement.</li>
+        </ul></div></li>
+    </ol>
+  </section>
+
+  <section class="block" id="education">
+    <div class="row head">
+      <span class="label">Education</span>
+      <div><h2>Education</h2></div>
+    </div>
+    <ol class="tl">
+      <li class="row"><div><span class="when">2026 – 2027</span></div><div><h3>Predoctoral Research Fellow, Information Systems</h3><div class="org">Indian Institute of Management Bangalore</div><p>NSR Predoctoral Fellowship. Coursework in Econometrics, Quantitative Research Methods and Research Methodology.</p></div></li>
+      <li class="row"><div><span class="when">2020 – 2022</span></div><div><h3>MBA, Business Analytics</h3><div class="org">Indian Institute of Technology (ISM) Dhanbad</div><p>Thesis: Empowering AgriTech through Data Analytics and IoT, with Prof. K. S. Thyagaraj.</p></div></li>
+      <li class="row"><div><span class="when">2015 – 2019</span></div><div><h3>B.Tech, Computer Science and Engineering</h3><div class="org">IIIT Naya Raipur</div><p>Projects in reinforcement learning, robotics, blockchain and smart irrigation.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="block" id="awards">
+    <div class="row head">
+      <span class="label">Recognition</span>
+      <div><h2>Fellowships and awards</h2></div>
+    </div>
+    <ul class="twocol">
+      <li><span>NSR Predoctoral Fellowship<small>IIM Bangalore</small></span><span class="when">2026–27</span></li>
+      <li><span>Economics Mentoring Program, mentee<small>Harvard University</small></span><span class="when">2026</span></li>
+      <li><span>Tuition Fee Waiver (Government of India)<small>IIT ISM Dhanbad</small></span><span class="when">2020–22</span></li>
+      <li><span>Research Fellowship<small>Robert Gordon University, UK</small></span><span class="when">2018–19</span></li>
+      <li><span>Social Start-Up Fellowship Programme</span><span class="when">2018</span></li>
+      <li><span>Chief Minister Scholarship, full tuition waiver<small>IIIT Naya Raipur</small></span><span class="when">B.Tech</span></li>
+      <li><span>Startup incubation support<small>NSRCEL (IIM Bangalore), AIC, SSIP Gujarat</small></span><span class="when"></span></li>
+      <li><span>Finalist, CONTRIVE startup competition<small>Cognizance, IIT Roorkee</small></span><span class="when">2017</span></li>
+      <li><span>Finalist, POSIDON (Aqwabot)<small>Cognizance, IIT Roorkee</small></span><span class="when"></span></li>
+      <li><span>Runner-up, Vigyaan technology exhibition<small>NIT Raipur</small></span><span class="when"></span></li>
+    </ul>
+
+    <h3 class="sub label">Selected projects</h3>
+    <ul class="twocol">
+      <li><span>Predicting News Show Popularity using Machine Learning<small>IIT ISM Dhanbad</small></span><span class="when">2021</span></li>
+      <li><span>Blockchain Technology in Healthcare<small>IIIT Naya Raipur</small></span><span class="when">2018</span></li>
+      <li><span>Smart Irrigation using Image Processing and ML<small>IIIT Naya Raipur</small></span><span class="when">2018</span></li>
+      <li><span>Personal Assistant Robot<small>IIIT Naya Raipur</small></span><span class="when">2018</span></li>
+      <li><span>Traffic Management using Reinforcement Learning<small>IIIT Naya Raipur</small></span><span class="when">2017</span></li>
+      <li><span>Hardware-Based Defence System for Cloud Data Security<small>IIIT Naya Raipur</small></span><span class="when">2017</span></li>
+    </ul>
+
+    <h3 class="sub label">Skills</h3>
+    <dl class="skills">
+      <dt>Languages</dt><dd>Python, Go, SQL, JavaScript</dd>
+      <dt>Statistics</dt><dd>R, Stata, Python statistical libraries</dd>
+      <dt>Machine learning</dt><dd>scikit-learn, PyTorch, TensorFlow, OpenCV</dd>
+      <dt>Tools</dt><dd>Jupyter, Power BI, Alteryx, Excel, Git, LaTeX, ROS, React.js</dd>
+      <dt>Hardware</dt><dd>Xilinx FPGA, Arduino, Raspberry Pi</dd>
+    </dl>
+  </section>
+
+  <section class="block" id="about">
+    <div class="row">
+      <span class="label">About</span>
+      <div>
+        <h2 class="h2" style="margin-bottom:18px">Engineer, founder, now researcher</h2>
+        <p style="margin:0 0 14px;max-width:40em">I came to research from building things. A computer science degree, robotics and AI labs in the UK and Italy, four years modelling borrower behaviour in microfinance, and an agritech startup all pointed to the same question: what makes people actually rely on technology that is already available to them?</p>
+        <p style="margin:0;max-width:40em">I'm from Korba, Chhattisgarh, and I'm applying to PhD programmes in Information Systems and responsible AI. Outside work, I travel by motorcycle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="cv">
+    <div class="row">
+      <span class="label">Curriculum vitae</span>
+      <div>
+        <div class="cvcard">
+          <div class="doc" aria-hidden="true">PDF</div>
+          <div class="cvmeta"><b>Sumit Kumar Jatwar · CV</b><span>3 pages · research, experience, education, awards, references</span></div>
+          <div class="cvbtns">
+            <a class="btn primary" href="Sumit_Kumar_Jatwar_CV.pdf" download>Download CV</a>
+            <a class="btn" href="Sumit_Kumar_Jatwar_CV.pdf" target="_blank" rel="noopener">Open PDF</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="row">
+      <span class="label">Contact</span>
+      <div>
+        <h2 class="h2">Let's talk research</h2>
+        <p style="color:var(--muted);margin:12px 0 0;max-width:38em">I'd be glad to hear from faculty, PhD programmes and collaborators working on trust in AI, financial inclusion or technology adoption.</p>
+        <div class="contact">
+          <span class="email" id="email">sumit.kumarjatwar26@iimb.ac.in</span>
+          <button class="copy" id="copyBtn" type="button">Copy email</button>
+        </div>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/sumit-kumar-jatwar-3a566a11a/" target="_blank" rel="noopener">LinkedIn</a>
+          <span style="color:var(--muted)">113, PhD Students' Cubicle, IIM Bangalore, Bengaluru</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Sumit Kumar Jatwar · IIM Bangalore, India</div></footer>
+
+<script>
+(function(){
+  // copy email
+  const btn=document.getElementById('copyBtn'), em=document.getElementById('email');
+  function sel(){const r=document.createRange();r.selectNodeContents(em);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Press Ctrl+C';}
+  btn.addEventListener('click',()=>{
+    try{navigator.clipboard.writeText(em.textContent).then(()=>{btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy email',1600)},sel);}catch(e){sel();}
+  });
+
+
+  // dot grid
+  const c=document.getElementById('dots'), ctx=c.getContext('2d');
+  const N=14, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let seed=7; const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const states=[]; for(let i=0;i<N*N;i++){const r=rnd(); states.push(r<0.38?0:r<0.8?1:2);}
+  let phase=0;
+  const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function draw(){
+    const w=c.clientWidth, dpr=devicePixelRatio||1; if(!w) return;
+    if(c.width!==Math.round(w*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(w*dpr);}
+    ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,w);
+    const cols=[col('--accent'),col('--gold'),col('--line')];
+    const step=w/N, r=step*0.3;
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++){
+      const s=states[y*N+x];
+      const rr=(s===0&&!reduce)?r*(1+0.18*Math.sin(phase+(x+y)*0.5)):r;
+      ctx.beginPath();ctx.arc(step*(x+.5),step*(y+.5),rr,0,Math.PI*2);
+      ctx.fillStyle=cols[s];ctx.fill();
+    }
+  }
+  function loop(){phase+=0.03;draw();requestAnimationFrame(loop);}
+  draw(); if(!reduce) requestAnimationFrame(loop);
+  addEventListener('resize',draw);
+})();
+</script>
+
+</body>
+</html>
